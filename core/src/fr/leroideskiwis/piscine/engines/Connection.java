@@ -22,7 +22,10 @@ public class Connection {
     }
 
     public void tick(){
-        if(engine != null) engine.accept(aCase.poll());
+        if(engine != null) {
+            engine.accept(aCase.poll());
+            engine.tick();
+        };
     }
 
     public void release(Water water){

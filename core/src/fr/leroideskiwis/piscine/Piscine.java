@@ -43,7 +43,7 @@ public class Piscine {
     public void tick(){
         ThermicalTransfer thermicalTransfer = new ThermicalTransfer();
         thermicalTransfer.tick(cases);
-        //connections.forEach(Connection::tick);
+        connections.forEach(Connection::tick);
     }
 
     public void connect(int in, int out, Engine engine){

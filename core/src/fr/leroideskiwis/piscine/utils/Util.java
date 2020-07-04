@@ -1,9 +1,12 @@
 package fr.leroideskiwis.piscine.utils;
 
 import com.badlogic.gdx.graphics.Color;
+import fr.leroideskiwis.piscine.Case;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
+import java.util.Random;
 
 public class Util {
 
@@ -28,4 +31,8 @@ public class Util {
 
     }
 
+    public static <T> T pick(List<T> list) {
+        Random random = new Random();
+        return list.get(random.nextInt(list.size()));
+    }
 }

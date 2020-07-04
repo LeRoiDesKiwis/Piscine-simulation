@@ -2,10 +2,10 @@ package fr.leroideskiwis.piscine;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import fr.leroideskiwis.piscine.utils.Interval;
+import fr.leroideskiwis.piscine.utils.Util;
 import fr.leroideskiwis.piscine.water.Water;
 
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,18 +20,34 @@ public class Case {
         this.point = point;
     }
 
-    public void move(Water newWater){
-        //TODO
+    private Case pickRandomNeighBoor(){
+        return Util.pick(neighboors);
+    }
 
+    public void move(Water newWater){
+        if(water != null && !hasEmptyNeighBoors()) {
+            Case newCase = pickRandomNeighBoor();
+            newCase.move(water);
+        }
+        this.water = newWater;
+    }
+
+    private boolean hasEmptyNeighBoors(){
+        return neighboors.size() < 8;
     }
 
     public Water poll(){
-        //TODO
-        return water;
+        Water oldWater = water;
+        if(water != null && !hasEmptyNeighBoors()) {
+            this.water = pickRandomNeighBoor().poll();
+        }
+        return oldWater;
     }
 
     public void render(ShapeRenderer shapeRenderer, int width, int height){
-        water.render(shapeRenderer, point.x, point.y, width, height);
+        if(water != null) water.render(shapeRenderer, point.x, point.y, width, height);
+        else shapeRenderer.setColor(1, 1, 1, 1);
+        shapeRenderer.rect(point.x*width, point.y*height, width, height);
     }
 
     private List<Case> loadNeighbours(List<Case> cases){

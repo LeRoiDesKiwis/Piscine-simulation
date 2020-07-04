@@ -26,7 +26,7 @@ public abstract class Engine {
 
     public void accept(Water water){
         waters.offer(water);
-        if(waters.remainingCapacity() >= 1){
+        if(waters.remainingCapacity() <= 1){
             release(waters.poll());
         }
     }

@@ -38,6 +38,6 @@ public class Water {
     }
 
     public boolean isCooler(Water water){
-        return water.temperature > temperature;
+        return water.temperature < temperature;
     }
 }

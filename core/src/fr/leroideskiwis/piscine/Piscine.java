@@ -14,6 +14,7 @@ public class Piscine {
 
     private List<Case> cases = new ArrayList<>();
     private final int size;
+    private Connection[] connections = new Connection[3];
 
     public Piscine(int size){
         this.size = size;

@@ -20,7 +20,7 @@ public class Util {
 
     }
 
-    public static float random(int min, int max, int scale){
+    public static float random(float min, float max, int scale){
         float random = min + (float)(Math.random() * ((max - min) + 1));
         BigDecimal bd = new BigDecimal(random);
         bd = bd.setScale(scale, RoundingMode.HALF_EVEN);

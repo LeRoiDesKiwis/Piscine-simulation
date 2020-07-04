@@ -20,6 +20,16 @@ public class Case {
         this.point = point;
     }
 
+    public void move(Water newWater){
+        //TODO
+
+    }
+
+    public Water poll(){
+        //TODO
+        return water;
+    }
+
     public void render(ShapeRenderer shapeRenderer, int width, int height){
         water.render(shapeRenderer, point.x, point.y, width, height);
     }
@@ -44,5 +54,9 @@ public class Case {
 
     public boolean canTransfer(Case aCase2){
         return aCase2.water.isCooler(water);
+    }
+
+    public boolean isLocatedAt(Point point) {
+        return this.point.equals(point);
     }
 }

@@ -1,7 +1,6 @@
 package fr.leroideskiwis.piscine.utils;
 
 import com.badlogic.gdx.graphics.Color;
-import fr.leroideskiwis.piscine.Case;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Util {
+
+    private static final Random random = new Random();
 
     public static float map(float i, float oldMax, float newMax){
         return (newMax*i)/oldMax;
@@ -28,11 +29,9 @@ public class Util {
         BigDecimal bd = new BigDecimal(random);
         bd = bd.setScale(scale, RoundingMode.HALF_EVEN);
         return bd.floatValue();
-
     }
 
     public static <T> T pick(List<T> list) {
-        Random random = new Random();
         return list.get(random.nextInt(list.size()));
     }
 }

@@ -14,16 +14,23 @@ public class Piscine {
 
     private List<Case> cases = new ArrayList<>();
     private final int size;
+    private final ThermicalTransfer thermicalTransfer = new ThermicalTransfer();
 
     public Piscine(int size){
         this.size = size;
-        fill(90);
+        fill(40);
     }
 
     private void fill(int height) {
-        for(int y = 0; y < height; y++){
+        for(int y = 0; y < height/2; y++){
             for(int x = 0; x < size; x++){
-                Water water = new Water(y+5);
+                Water water = new Water(10);
+                cases.add(new Case(water, new Point(x, y)));
+            }
+        }
+        for(int y = height/2; y < height; y++){
+            for(int x = 0; x < size; x++){
+                Water water = new Water(80);
                 cases.add(new Case(water, new Point(x, y)));
             }
         }
@@ -35,7 +42,6 @@ public class Piscine {
     }
 
     public void tick(){
-        ThermicalTransfer thermicalTransfer = new ThermicalTransfer();
         thermicalTransfer.tick(cases);
     }
 

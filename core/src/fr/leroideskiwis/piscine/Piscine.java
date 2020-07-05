@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import fr.leroideskiwis.piscine.engines.Connection;
 import fr.leroideskiwis.piscine.engines.Engine;
 import fr.leroideskiwis.piscine.engines.Heater;
+import fr.leroideskiwis.piscine.engines.Melanger;
 import fr.leroideskiwis.piscine.utils.ThermicalTransfer;
 import fr.leroideskiwis.piscine.water.Water;
 
@@ -23,7 +24,9 @@ public class Piscine {
         this.size = size;
         fill(40);
         connections.add(new Connection(cases, new Point(0, 5)));
-        connections.add(new Connection(cases, new Point(0, 75)));
+        connections.add(new Connection(cases, new Point(0, 35)));
+        connections.add(new Connection(cases, new Point(size-1, 5)));
+        connections.add(new Connection(cases, new Point(size-1, 35)));
         connect(0, 1, new Heater());
     }
 

@@ -22,7 +22,7 @@ public class Connection {
     }
 
     public void tick(){
-        if(engine != null) {
+        if(engine != null && engine.canAccept(aCase)) {
             engine.accept(aCase.poll());
             engine.tick();
         };

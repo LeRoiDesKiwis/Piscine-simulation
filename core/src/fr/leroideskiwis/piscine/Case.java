@@ -25,20 +25,20 @@ public class Case {
     }
 
     public void move(Water newWater){
-        if(water != null && !hasEmptyNeighBoors()) {
+        if(water != null && !isInSurface()) {
             Case newCase = pickRandomNeighBoor();
             newCase.move(water);
         }
         this.water = newWater;
     }
 
-    private boolean hasEmptyNeighBoors(){
-        return neighboors.size() < 8;
+    private boolean isInSurface(){
+        return point.y == 0;
     }
 
     public Water poll(){
         Water oldWater = water;
-        if(water != null && !hasEmptyNeighBoors()) {
+        if(water != null && !isInSurface()) {
             this.water = pickRandomNeighBoor().poll();
         }
         return oldWater;

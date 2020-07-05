@@ -1,5 +1,6 @@
 package fr.leroideskiwis.piscine.engines;
 
+import fr.leroideskiwis.piscine.Case;
 import fr.leroideskiwis.piscine.water.Water;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -30,6 +31,8 @@ public abstract class Engine {
             release(waters.poll());
         }
     }
+
+    public abstract boolean canAccept(Case aCase);
 
     public void release(Water water){
         out.release(water);

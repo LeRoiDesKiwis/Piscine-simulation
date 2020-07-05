@@ -7,22 +7,11 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public abstract class Engine {
 
-    private Connection in;
     private Connection out;
     ArrayBlockingQueue<Water> waters = new ArrayBlockingQueue<>(50);
 
-    public void connect(Connection.ConnectionMode mode, Connection connection){
-        switch(mode){
-            case INPUT:
-                in = connection;
-                break;
-            case OUTPUT:
-                out = connection;
-                break;
-            default:
-                break;
-        }
-
+    public void connectOutput(Connection connection){
+        this.out = connection;
     }
 
     public void accept(Water water){

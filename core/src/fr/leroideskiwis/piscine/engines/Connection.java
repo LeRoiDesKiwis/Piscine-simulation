@@ -18,7 +18,7 @@ public class Connection {
 
     public void connect(Engine engine, ConnectionMode connectionMode){
         this.engine = engine;
-        engine.connect(connectionMode, this);
+        engine.connectOutput(this);
     }
 
     public void tick(){

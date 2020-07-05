@@ -16,7 +16,7 @@ public class Main extends ApplicationAdapter {
 	@Override
 	public void create () {
 		this.shapeRenderer = new ShapeRenderer();
-		this.piscine = new Piscine(100);
+		this.piscine = new Piscine(50);
 	}
 
 	@Override

@@ -38,8 +38,10 @@ public class Case {
     }
 
     public void transferTemp(Case aCase2, float temp) {
-        water.cool(temp);
-        aCase2.water.heat(temp);
+        if(water.canCool(temp) && aCase2.water.canHeat(temp)) {
+            water.cool(temp);
+            aCase2.water.heat(temp);
+        }
     }
 
     public boolean canTransfer(Case aCase2){

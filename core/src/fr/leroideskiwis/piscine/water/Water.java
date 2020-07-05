@@ -38,6 +38,14 @@ public class Water {
     }
 
     public boolean isCooler(Water water){
-        return water.temperature < temperature;
+        return this.temperature < water.temperature;
+    }
+
+    public boolean canCool(float temp){
+        return temperature-temp > 0;
+    }
+
+    public boolean canHeat(float temp){
+        return temperature+temp < 100;
     }
 }

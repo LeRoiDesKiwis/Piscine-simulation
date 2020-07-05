@@ -38,7 +38,7 @@ public class Water {
     }
 
     public boolean isCooler(Water water){
-        return this.temperature < water.temperature;
+        return this.temperature-water.temperature <= 1;
     }
 
     public boolean canCool(float temp){

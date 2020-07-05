@@ -9,7 +9,7 @@ public abstract class Engine {
 
     private Connection in;
     private Connection out;
-    ArrayBlockingQueue<Water> waters = new ArrayBlockingQueue<>(30);
+    ArrayBlockingQueue<Water> waters = new ArrayBlockingQueue<>(50);
 
     public void connect(Connection.ConnectionMode mode, Connection connection){
         switch(mode){
@@ -26,6 +26,7 @@ public abstract class Engine {
     }
 
     public void accept(Water water){
+        if(water == null) return;
         waters.offer(water);
         if(waters.remainingCapacity() <= 1){
             release(waters.poll());

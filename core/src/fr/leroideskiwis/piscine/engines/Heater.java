@@ -8,15 +8,14 @@ public class Heater extends Engine {
 
     @Override
     public boolean canAccept(Case aCase) {
-        return Math.random() < 0.1;
+        return Math.random() < 0.2;
     }
 
     @Override
     void tick() {
-        for (Water water : waters) {
-            float temp = Util.random(0.01f, 1f, 1);
-            water.heat(temp);
-        }
+        float temp = Util.random(0.5f, 2f, 1);
+        Water water = waters.peek();
+        if(water != null && water.canHeat(temp)) water.heat(temp);
     }
 
 }

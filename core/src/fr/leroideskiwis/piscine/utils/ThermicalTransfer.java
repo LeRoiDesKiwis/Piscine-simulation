@@ -16,14 +16,14 @@ public class ThermicalTransfer {
         transferedList.clear();
 
         for (Case aCase : cases) {
-            List<Case> neighbours = aCase.getNeighbours(cases, transferedList);
+            List<Case> neighbours = aCase.getNeighbours(cases);
             if(coldedCases.containsKey(aCase)){
                 coldedCases.put(aCase, coldedCases.get(aCase)+1);
                 if(coldedCases.get(aCase) > 2) coldedCases.remove(aCase);
                 continue;
             } else coldedCases.put(aCase, 1);
             for (Case neighbour : neighbours) {
-                if(!aCase.canTransfer(neighbour)) continue;
+                if(!aCase.canTransfer(neighbour) || transferedList.contains(neighbour)) continue;
                 transferedList.add(neighbour);
                 transfer(aCase, neighbour);
             }

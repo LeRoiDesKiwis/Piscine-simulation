@@ -22,25 +22,25 @@ public class Piscine {
 
     public Piscine(int size) {
         this.size = size;
-        fill(40);
+        fill(80);
         connections.add(new Connection(cases, new Point(0, 5)));
-        connections.add(new Connection(cases, new Point(0, 35)));
+        connections.add(new Connection(cases, new Point(0, 75)));
         connections.add(new Connection(cases, new Point(size-1, 5)));
-        connections.add(new Connection(cases, new Point(size-1, 35)));
-        connect(0, 1, new Heater());
+        connections.add(new Connection(cases, new Point(size-1, 75)));
+        connect(0, 3, new Heater());
     }
 
     private void fill(int height) {
         for(int y = 0; y < height/2; y++){
             for(int x = 0; x < size; x++){
-                Water water = new Water(10);
-                cases.add(new Case(water, new Point(x, y)));
+                Water water = new Water(1);
+                cases.add(new Case(water, new Point(x, y), height));
             }
         }
         for(int y = height/2; y < height; y++){
             for(int x = 0; x < size; x++){
-                Water water = new Water(80);
-                cases.add(new Case(water, new Point(x, y)));
+                Water water = new Water(99);
+                cases.add(new Case(water, new Point(x, y), height));
             }
         }
     }

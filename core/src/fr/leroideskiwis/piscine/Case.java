@@ -14,10 +14,12 @@ public class Case {
     private Water water;
     private final Point point;
     private List<Case> neighboors;
+    private final int height;
 
-    public Case(Water water, Point point) {
+    public Case(Water water, Point point, int height) {
         this.water = water;
         this.point = point;
+        this.height = height;
     }
 
     private Case pickRandomNeighBoor(){
@@ -33,20 +35,20 @@ public class Case {
     }
 
     private boolean isInSurface(){
-        return point.y == 0;
+        return point.y == height-1;
     }
 
     public Water poll(){
         Water oldWater = water;
         if(water != null && !isInSurface()) {
             this.water = pickRandomNeighBoor().poll();
-        }
+        } else this.water = null;
         return oldWater;
     }
 
     public void render(ShapeRenderer shapeRenderer, int width, int height){
         if(water != null) water.render(shapeRenderer, point.x, point.y, width, height);
-        else shapeRenderer.setColor(1, 1, 1, 1);
+        else shapeRenderer.setColor(0, 0, 0, 1);
         shapeRenderer.rect(point.x*width, point.y*height, width, height);
     }
 
@@ -59,8 +61,8 @@ public class Case {
                 .collect(Collectors.toList());
     }
 
-    public List<Case> getNeighbours(List<Case> cases, List<Case> blacklist){
-        return (neighboors == null ? neighboors = loadNeighbours(cases) : neighboors).stream().filter(aCase -> !blacklist.contains(aCase)).collect(Collectors.toList());
+    public List<Case> getNeighbours(List<Case> cases){
+        return (neighboors == null ? neighboors = loadNeighbours(cases) : neighboors);
     }
 
     public void transferTemp(Case aCase2, float temp) {
@@ -71,7 +73,7 @@ public class Case {
     }
 
     public boolean canTransfer(Case aCase2){
-        return aCase2.water.isCooler(water);
+        return water != null && aCase2.water != null && aCase2.water.isCooler(water);
     }
 
     public boolean isLocatedAt(Point point) {

@@ -9,7 +9,7 @@ public class Water {
 
     private float temperature;
 
-    public Water(int temperature){
+    public Water(float temperature){
         this.temperature = temperature;
     }
 

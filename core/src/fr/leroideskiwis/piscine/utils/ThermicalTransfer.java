@@ -24,7 +24,7 @@ public class ThermicalTransfer {
 
     private void transfer(Case aCase1, Case aCase2){
         float temp = Util.random(0, 1, 1);
-        aCase1.transferTemp(aCase2, temp);
+        aCase2.transferTemp(aCase1, temp);
     }
 
 }
